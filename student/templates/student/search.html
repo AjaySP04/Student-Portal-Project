@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block header %}
+{% endblock header%}
+
+{% block content %}
+	<div class='search'>
+		<form method="get" class="form-inline">
+			<input type="text" name="search" class="form-control" value="{{request.form.search}}" placeholder="Search student...">
+			<button class="btn btn-info" type="submit"><i class="fa fa-search"></i></button>
+		</form>
+	</div>
+{% endblock content %}
