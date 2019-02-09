@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% block title %}Edit Details - "{{ student['name'] }}"{% endblock %}
+{% endblock %}
+
+{% block content %}
+    <form method='post'>
+       <div class="form-group">
+          <label for="roll"> Roll Number </label>
+          <input type="text" class="form-control" name="roll" id="roll" value="{{ student['roll_number'] }}" disabled>
+        </div>
+        <div class="form-group">
+          <label for="name"> Student Name </label>
+          <input type="text" class="form-control" name="name" id="name" value="{{ request.form['name'] or student['name'] }}" placeholder="name">
+        </div>
+        <div class="form-group">
+          <label for="name"> Age </label>
+          <input type="number" class="form-control" name="age" id="age" value="{{ request.form['age'] or student['age'] }}" min="1" max="99">
+        </div>
+        <div class="form-group">
+          <label for="gender"> Gender </label>
+          <input type="text" class='form-control' name="gender" id="gender" value="{{ request.form['gender'] or student['gender'] }}">
+        </div>
+        <button type="submit" class="btn btn-primary active">Save</button>
+        <a href="{{ url_for('student.index') }}" class="btn btn-success"> Back </a>
+    </form>
+    <hr>
+    <form action="{{ url_for('student.delete', id=student['id']) }}" method="post">
+      <input class="btn btn-danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+    </form>
+{% endblock content %}

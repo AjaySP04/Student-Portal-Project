@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  {% block title %}Add Student{% endblock %}
+{% endblock %}
+
+{% block content %}
+	<form method='post'>
+		<div class="form-group">
+			<label for="name"> Student Name </label>
+			<input type="text" class="form-control" name="name" id="name" value="{{ request.form['name'] }}" placeholder="name">
+		</div>
+		<div class="form-group">
+			<label for="name"> Age </label>
+			<input type="number" class="form-control" name="age" id="age" value="{{ request.form['age'] }}" min="1" max="99">
+		</div>
+		<div class="form-group">
+			<label for="gender"> Gender </label>
+			<select name="gender" class="form-control" id="gender">
+				<option value="N"> ---- </option>
+				<option value='Male'> Male </option>
+				<option value='Female'> Female </option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary active">Save</button>
+		<a href="{{ url_for('student.index') }}" class="btn btn-success"> Back </a>
+	</form>
+	
+{% endblock content %}
